@@ -54,7 +54,7 @@ const Layout = () => {
             Shop.
           </Link>
         </div>
-        <div className="hidden md:flex md:space-x-4 lg:flex-row lg:justify-center lg:space-x-8">
+        <div className="hidden self-center md:flex md:space-x-4 lg:flex-row lg:justify-center lg:space-x-8">
           <div className="cursor-pointer text-gray-900 hover:text-gray-500">
             <Link href="/">
               Home
@@ -67,9 +67,9 @@ const Layout = () => {
           <div className="cursor-pointer text-gray-900 hover:text-gray-500">About</div>
           <div className="cursor-pointer text-gray-900 hover:text-gray-500">Contact</div>
         </div>
-        <div className="flex justify-end space-x-4 lg:space-x-8 px-2">
+        <div className="flex justify-end self-center space-x-4 lg:space-x-8 px-2">
         <div className="md:hidden relative">
-            <button onClick={()=>{setMenu(!menu); setLang(false); setCur(false)}} class="px-2 text-gray-900 peer focus:text-gray-500 hover:text-gray-500 transition-all duration-200">
+            <button onClick={()=>{setMenu(!menu); setLang(false); setCur(false)}} className="px-2 text-gray-900 peer focus:text-gray-500 hover:text-gray-500 transition-all duration-200">
               Menu
             </button>
             {menu &&
