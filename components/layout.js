@@ -50,13 +50,13 @@ const Layout = () => {
       {/*Navbar*/}
       <div className="flex flex-row justify-between border-b-2 py-4">
         <div className="cursor-pointer text-3xl font-black px-2">
-          <Link to="/">
+          <Link href="/">
             Shop.
           </Link>
         </div>
         <div className="hidden md:flex md:space-x-4 lg:flex-row lg:justify-center lg:space-x-8">
           <div className="cursor-pointer text-gray-900 hover:text-gray-500">
-            <Link to="/">
+            <Link href="/">
               Home
             </Link>
           </div>
@@ -76,7 +76,7 @@ const Layout = () => {
               <div className="absolute bg-white -right-6 top-5 shadow-xl rounded-lg">
                 <ul className='py-3 px-3 flex flex-col'>
                   <li onClick={()=>setMenu(false)} className='cursor-pointer p-1 rounded-md text-gray-900 hover:text-gray-500 text-center'>
-                    <Link to="/">
+                    <Link href="/">
                       Home
                     </Link>
                   </li>
