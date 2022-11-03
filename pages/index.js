@@ -1,7 +1,13 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
+import Link from "next/link";
+import { useState } from "react";
+import products from "../dummy/products.json"
 
 export default function Home() {
+  const tabsData =  ['All Products', "Men's Clothing", "Jewelery", "Electronics", "Women's Clothing"]
+  const [tabs, setTabs] = useState(tabsData[0]);
+
   return (
     <div className="my-2 mx-3">
 
@@ -12,63 +18,123 @@ export default function Home() {
 
       <Layout />
 
-      <img
-        class="object-cover w-full h-96"
-        src="https://akcdn.detik.net.id/community/media/visual/2021/12/25/shopee-1_169.png?w=700&q=90"
-        alt="Cart"
-      />
-
       <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <img
+          class="object-cover w-full h-96"
+          src="https://akcdn.detik.net.id/community/media/visual/2021/12/25/shopee-1_169.png?w=700&q=90"
+          alt="Cart"
+        />
 
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
+        <div className="text-3xl font-bold py-10 text-center">
+          New Arrivals
+        </div>
 
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+        {/* Tabs */}
+        <div className="flex flex-row justify-center space-x-4 md:space-x-8">
+          {
+            tabsData.map((tab) => (
+              <button
+                className="text-center cursor-pointer text-gray-900 peer focus:text-gray-500 hover:text-gray-500"
+                onClick={()=>{
+                  setTabs(tab)
+                }}>
+                  {tab}
+              </button>
+            ))
+          }
+        </div>
 
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+        {/* Product List */}
+        <div>
+          <div className="bg-white">
+            <div className="mx-auto max-w-2xl py-16 lg:max-w-7xl px-4">
+              <h2 className="sr-only">Products</h2>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+              <div className="grid gap-y-10 gap-x-6 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                {products.map((product) => (
+                  tabs === "All Products" ? (
+                  <Link key={product.id} href={"products/1"} className="group">
+                    <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-white xl:aspect-w-7 xl:aspect-h-8">
+                      <img
+                        src={product.image}
+                        alt={product.imageAlt}
+                        className="h-72 w-72 object-contain object-center group-hover:opacity-75"
+                      />
+                    </div>
+                    <h3 className="truncate mt-4 text-sm text-gray-700">{product.title}</h3>
+                    <p className="mt-1 text-lg font-medium text-gray-900">$ {product.price}</p>
+                  </Link>
+                ) : null
+                ))}
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+                {products.map((product) => (
+                  tabs === "Men's Clothing" && product.category === "men's clothing" ? (
+                  <a key={product.id} href={product.href} className="group">
+                    <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-white xl:aspect-w-7 xl:aspect-h-8">
+                      <img
+                        src={product.image}
+                        alt={product.imageAlt}
+                        className="h-72 w-72 object-contain object-center group-hover:opacity-75"
+                      />
+                    </div>
+                    <h3 className="truncate mt-4 text-sm text-gray-700">{product.title}</h3>
+                    <p className="mt-1 text-lg font-medium text-gray-900">$ {product.price}</p>
+                  </a>
+                  ) : null
+                ))}
+
+                {products.map((product) => (
+                  tabs === "Jewelery" && product.category === "jewelery" ? (
+                  <a key={product.id} href={product.href} className="group">
+                    <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-white xl:aspect-w-7 xl:aspect-h-8">
+                      <img
+                        src={product.image}
+                        alt={product.imageAlt}
+                        className="h-72 w-72 object-contain object-center group-hover:opacity-75"
+                      />
+                    </div>
+                    <h3 className="truncate mt-4 text-sm text-gray-700">{product.title}</h3>
+                    <p className="mt-1 text-lg font-medium text-gray-900">$ {product.price}</p>
+                  </a>
+                ) : null
+                ))}
+
+                {products.map((product) => (
+                  tabs === "Electronics" && product.category === "electronics" ? (
+                  <a key={product.id} href={product.href} className="group">
+                    <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-white xl:aspect-w-7 xl:aspect-h-8">
+                      <img
+                        src={product.image}
+                        alt={product.imageAlt}
+                        className="h-72 w-72 object-contain object-center group-hover:opacity-75"
+                      />
+                    </div>
+                    <h3 className="truncate mt-4 text-sm text-gray-700">{product.title}</h3>
+                    <p className="mt-1 text-lg font-medium text-gray-900">$ {product.price}</p>
+                  </a>
+                ) : null
+                ))}
+
+                {products.map((product) => (
+                  tabs === "Women's Clothing" && product.category === "women's clothing" ? (
+                  <a key={product.id} href={product.href} className="group">
+                    <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-white xl:aspect-w-7 xl:aspect-h-8">
+                      <img
+                        src={product.image}
+                        alt={product.imageAlt}
+                        className="h-72 w-72 object-contain object-center group-hover:opacity-75"
+                      />
+                    </div>
+                    <h3 className="truncate mt-4 text-sm text-gray-700">{product.title}</h3>
+                    <p className="mt-1 text-lg font-medium text-gray-900">$ {product.price}</p>
+                  </a>
+                ) : null
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className="logo" />
-        </a>
-      </footer>
-
     </div>
   )
 }
