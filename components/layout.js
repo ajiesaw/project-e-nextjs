@@ -7,7 +7,7 @@ const Layout = () => {
   const [menu, setMenu] = useState(false);
   return (
     <>
-    <div className="">
+    <div className="my-2 mx-3">
   
       {/*Bar*/}
       <div className="flex flex-row justify-between border-b-2 pb-2">
