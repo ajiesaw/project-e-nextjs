@@ -69,7 +69,7 @@ export default function Home() {
 
                 {products.map((product) => (
                   tabs === "Men's Clothing" && product.category === "men's clothing" ? (
-                  <a key={product.id} href={product.href} className="group">
+                  <Link href={'/products/' + product.id} key={product.id} className="group">
                     <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-white xl:aspect-w-7 xl:aspect-h-8">
                       <img
                         src={product.image}
@@ -79,13 +79,13 @@ export default function Home() {
                     </div>
                     <h3 className="truncate mt-4 text-sm text-gray-700">{product.title}</h3>
                     <p className="mt-1 text-lg font-medium text-gray-900">$ {product.price}</p>
-                  </a>
+                  </Link>
                   ) : null
                 ))}
 
                 {products.map((product) => (
                   tabs === "Jewelery" && product.category === "jewelery" ? (
-                  <a key={product.id} href={product.href} className="group">
+                  <Link href={'/products/' + product.id} key={product.id} className="group">
                     <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-white xl:aspect-w-7 xl:aspect-h-8">
                       <img
                         src={product.image}
@@ -95,13 +95,13 @@ export default function Home() {
                     </div>
                     <h3 className="truncate mt-4 text-sm text-gray-700">{product.title}</h3>
                     <p className="mt-1 text-lg font-medium text-gray-900">$ {product.price}</p>
-                  </a>
+                  </Link>
                 ) : null
                 ))}
 
                 {products.map((product) => (
                   tabs === "Electronics" && product.category === "electronics" ? (
-                  <a key={product.id} href={product.href} className="group">
+                  <Link href={'/products/' + product.id} key={product.id} className="group">
                     <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-white xl:aspect-w-7 xl:aspect-h-8">
                       <img
                         src={product.image}
@@ -111,13 +111,13 @@ export default function Home() {
                     </div>
                     <h3 className="truncate mt-4 text-sm text-gray-700">{product.title}</h3>
                     <p className="mt-1 text-lg font-medium text-gray-900">$ {product.price}</p>
-                  </a>
+                  </Link>
                 ) : null
                 ))}
 
                 {products.map((product) => (
                   tabs === "Women's Clothing" && product.category === "women's clothing" ? (
-                  <a key={product.id} href={product.href} className="group">
+                  <Link href={'/products/' + product.id} key={product.id} className="group">
                     <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-white xl:aspect-w-7 xl:aspect-h-8">
                       <img
                         src={product.image}
@@ -127,7 +127,7 @@ export default function Home() {
                     </div>
                     <h3 className="truncate mt-4 text-sm text-gray-700">{product.title}</h3>
                     <p className="mt-1 text-lg font-medium text-gray-900">$ {product.price}</p>
-                  </a>
+                  </Link>
                 ) : null
                 ))}
               </div>
