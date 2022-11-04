@@ -53,7 +53,7 @@ export default function Home() {
               <div className="grid gap-y-10 gap-x-6 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 {products.map((product) => (
                   tabs === "All Products" ? (
-                  <Link key={product.id} href={"products/1"} className="group">
+                  <Link href={'/products/' + product.id} key={product.id} className="group">
                     <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-white xl:aspect-w-7 xl:aspect-h-8">
                       <img
                         src={product.image}
