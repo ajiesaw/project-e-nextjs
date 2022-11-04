@@ -12,7 +12,7 @@ export default function Home() {
     <div className="my-2 mx-3">
 
       <Head>
-        <title>Create Next App</title>
+        <title>Shop. Ecommerce</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
