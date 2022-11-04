@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Layout from '../components/layout'
 import Link from "next/link";
 import { useState } from "react";
-import products from "../dummy/products.json"
+import products from "../json/products.json"
 
 export default function Home() {
   const tabsData =  ['All Products', "Men's Clothing", "Jewelery", "Electronics", "Women's Clothing"]
