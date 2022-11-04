@@ -1,7 +1,9 @@
 import Layout from "../../components/layout"
+import Counter from "../../components/counter"
 import { product } from '../../data'
 import Head from 'next/head'
 import Link from "next/link";
+import { useState } from "react";
 
 export const getStaticProps = async ({ params }) => {
   const products = product.filter(p => p.id.toString() == params.id)
@@ -19,7 +21,10 @@ export const getStaticPaths = async () => {
   return { paths, fallback: false }
 }
 
-export default ({ prod }) => (
+const DetailProduct = ({ prod }) => {
+const [color, setColor] = useState('blue')
+const [size, setSize] = useState('5l')
+return (
   <div className="my-2 mx-3">
 
     <Head>
@@ -39,13 +44,13 @@ export default ({ prod }) => (
       <div className="cursor-default">
         /
       </div>
-      <div className="cursor-pointer capitalize text-gray-900 hover:text-gray-600">
+      <div className="truncate cursor-pointer capitalize text-gray-900 hover:text-gray-600">
       {prod.category}
       </div>
       <div className="cursor-default">
         /
       </div>
-      <div className="font-medium">
+      <div className="truncate font-medium">
       {prod.title}
       </div>
     </div>
@@ -55,7 +60,7 @@ export default ({ prod }) => (
       <div className="flex justify-center">
         <img
           src={prod.image}
-          className="w-1/2 py-2"
+          className="h-96 w-96 object-contain object-center"
         />
       </div>
 
@@ -83,30 +88,41 @@ export default ({ prod }) => (
 
           <div className="border-b-2 py-2"></div>
 
-          <div className="grid grid-cols-2 pt-4">
+          <div className="flex pt-4 gap-10">
             <div>
               <p className="py-2">Color</p>
                 <div className="flex space-x-3">
-                  <button className="w-7 h-7 bg-blue-900 rounded-full ring-gray-400 hover:ring-2 hover:ring-offset-1 focus:ring-2 focus:ring-offset-1"></button>
-                  <button className="w-7 h-7 bg-red-900 rounded-full ring-gray-400 hover:ring-2 hover:ring-offset-1 focus:ring-2 focus:ring-offset-1"></button>
-                  <button className="w-7 h-7 bg-green-900 rounded-full ring-gray-400 hover:ring-2 hover:ring-offset-1 focus:ring-2 focus:ring-offset-1"></button>
-                  <button className="w-7 h-7 bg-yellow-900 rounded-full ring-gray-400 hover:ring-2 hover:ring-offset-1 focus:ring-2 focus:ring-offset-1"></button>
-                  <button className="w-7 h-7 bg-purple-900 rounded-full ring-gray-400 hover:ring-2 hover:ring-offset-1 focus:ring-2 focus:ring-offset-1"></button>
+                  <button className={`w-7 h-7 bg-blue-900 rounded-full hover:ring-2 hover:ring-offset-1 hover:ring-gray-400 ${color === 'blue' ? `focus:ring-2 focus:ring-offset-1 ring-gray-400` : ``}`} onClick={()=> setColor('blue')}></button>
+                  <button className={`w-7 h-7 bg-red-900 rounded-full hover:ring-2 hover:ring-offset-1 hover:ring-gray-400 ${color === 'red' ? `focus:ring-2 focus:ring-offset-1 ring-gray-400` : ``}`} onClick={()=> setColor('red')}></button>
+                  <button className={`w-7 h-7 bg-green-900 rounded-full hover:ring-2 hover:ring-offset-1 hover:ring-gray-400 ${color === 'green' ? `focus:ring-2 focus:ring-offset-1 ring-gray-400` : ``}`} onClick={()=> setColor('green')}></button>
+                  <button className={`w-7 h-7 bg-yellow-900 rounded-full hover:ring-2 hover:ring-offset-1 hover:ring-gray-400 ${color === 'yellow' ? `focus:ring-2 focus:ring-offset-1 ring-gray-400` : ``}`} onClick={()=> setColor('yellow')}></button>
+                  <button className={`w-7 h-7 bg-purple-900 rounded-full hover:ring-2 hover:ring-offset-1 hover:ring-gray-400 ${color === 'purple' ? `focus:ring-2 focus:ring-offset-1 ring-gray-400` : ``}`} onClick={()=> setColor('purple')}></button>
                 </div>
             </div>
+
             <div>
               <p className="py-2">Size</p>
                 <div className="flex space-x-3">
-                  <button className="w-7 h-7 bg-gray-100 rounded-md ring-gray-400 text-sm hover:ring-2 hover:ring-offset-1 focus:ring-2 focus:ring-offset-1">5L</button>
-                  <button className="w-7 h-7 bg-gray-100 rounded-md ring-gray-400 text-sm hover:ring-2 hover:ring-offset-1 focus:ring-2 focus:ring-offset-1">8L</button>
-                  <button className="w-7 h-7 bg-gray-100 rounded-md ring-gray-400 text-sm hover:ring-2 hover:ring-offset-1 focus:ring-2 focus:ring-offset-1">10L</button>
-                  <button className="w-7 h-7 bg-gray-100 rounded-md ring-gray-400 text-sm hover:ring-2 hover:ring-offset-1 focus:ring-2 focus:ring-offset-1">13L</button>
-                  <button className="w-7 h-7 bg-gray-100 rounded-md ring-gray-400 text-sm hover:ring-2 hover:ring-offset-1 focus:ring-2 focus:ring-offset-1">15L</button>
+                  <button className={`w-7 h-7 bg-gray-100 rounded-md text-sm hover:ring-2 hover:ring-offset-1 hover:ring-gray-400 ${size === '5L' ? `focus:ring-2 focus:ring-offset-1 ring-gray-400` : ``}`} onClick={()=> setSize('5L')}>5L</button>
+                  <button className={`w-7 h-7 bg-gray-100 rounded-md text-sm hover:ring-2 hover:ring-offset-1 hover:ring-gray-400 ${size === '8L' ? `focus:ring-2 focus:ring-offset-1 ring-gray-400` : ``}`} onClick={()=> setSize('8L')}>8L</button>
+                  <button className={`w-7 h-7 bg-gray-100 rounded-md text-sm hover:ring-2 hover:ring-offset-1 hover:ring-gray-400 ${size === '10L' ? `focus:ring-2 focus:ring-offset-1 ring-gray-400` : ``}`} onClick={()=> setSize('10L')}>10L</button>
+                  <button className={`w-7 h-7 bg-gray-100 rounded-md text-sm hover:ring-2 hover:ring-offset-1 hover:ring-gray-400 ${size === '13L' ? `focus:ring-2 focus:ring-offset-1 ring-gray-400` : ``}`} onClick={()=> setSize('13L')}>13L</button>
+                  <button className={`w-7 h-7 bg-gray-100 rounded-md text-sm hover:ring-2 hover:ring-offset-1 hover:ring-gray-400 ${size === '15L' ? `focus:ring-2 focus:ring-offset-1 ring-gray-400` : ``}`} onClick={()=> setSize('15L')}>15L</button>
                 </div>
             </div>
+          </div>
+
+          <div className="flex pt-10">
+            <Counter />
+            <button className="w-32 bg-gray-800 hover:bg-gray-600 rounded-md mx-4 text-white">
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
 )
+}
+
+export default DetailProduct
