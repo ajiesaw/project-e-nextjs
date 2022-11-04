@@ -43,7 +43,7 @@ const Layout = () => {
           </div>
         </div>
         <div className="hidden md:flex md:justify-end md:px-2">
-          Free delivery every Monday and thursday.
+          Free delivery every Monday and Thursday.
         </div>
       </div>
 
