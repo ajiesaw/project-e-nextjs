@@ -2,10 +2,12 @@ import Navbar from "../../components/navbar"
 import Counter from "../../components/counter"
 import Color from "../../components/color"
 import Size from "../../components/size"
+import Material from "../../components/material"
+import Layer from "../../components/layer"
+import Capacity from "../../components/capacity"
 import { product } from '../../data'
 import Head from 'next/head'
 import Link from "next/link";
-import { useState } from "react";
 
 export const getStaticProps = async ({ params }) => {
   const products = product.filter(p => p.id.toString() == params.id)
@@ -24,8 +26,7 @@ export const getStaticPaths = async () => {
 }
 
 const DetailProduct = ({ prod }) => {
-const [color, setColor] = useState('blue')
-const [size, setSize] = useState('5l')
+
   return (
     <div className="my-2 mx-3">
 
@@ -90,11 +91,25 @@ const [size, setSize] = useState('5l')
 
             <div className="border-b-2 py-2"></div>
 
-            <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
-              <Color />
+            {prod.category === "men's clothing" || prod.category === "women's clothing" ? (
+              <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+                <Color />
+                <Size />
+              </div>
+            ) : null}
 
-              <Size />
-            </div>
+            {prod.category === "jewelery" ? (
+              <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+                <Material />
+                <Layer />
+              </div>
+            ) : null}
+
+            {prod.category === "electronics" ? (
+              <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
+                <Capacity />
+              </div>
+            ) : null}
 
             <div className="flex py-6">
               <Counter />
