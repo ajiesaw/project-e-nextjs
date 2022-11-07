@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/layout'
+import Navbar from '../components/navbar'
 import Link from "next/link";
 import { useState } from "react";
 import products from "../json/products.json"
@@ -16,7 +16,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout />
+      <Navbar />
 
       <main>
         <img

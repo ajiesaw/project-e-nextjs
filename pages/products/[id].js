@@ -1,4 +1,4 @@
-import Layout from "../../components/layout"
+import Navbar from "../../components/navbar"
 import Counter from "../../components/counter"
 import { product } from '../../data'
 import Head from 'next/head'
@@ -32,7 +32,7 @@ const [size, setSize] = useState('5l')
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout />
+      <Navbar />
     
       {/* Breadcrumbs */}
       <div className="flex flex-row px-2 py-4 space-x-2 items-center">
