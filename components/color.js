@@ -4,8 +4,8 @@ const Color = () => {
   const [color, setColor] = useState()
 
   return (
-    <div>
-      <p className="py-2">Color</p>
+    <div className="py-6">
+      <p className="pb-2">Color</p>
         <div className="flex space-x-3">
           <button className={`w-7 h-7 bg-blue-900 rounded-full hover:ring-2 hover:ring-offset-1 hover:ring-gray-400 ${color === 'blue' ? `focus:ring-2 focus:ring-offset-1 ring-gray-400` : ``}`} onClick={()=> setColor('blue')}></button>
           <button className={`w-7 h-7 bg-red-900 rounded-full hover:ring-2 hover:ring-offset-1 hover:ring-gray-400 ${color === 'red' ? `focus:ring-2 focus:ring-offset-1 ring-gray-400` : ``}`} onClick={()=> setColor('red')}></button>
