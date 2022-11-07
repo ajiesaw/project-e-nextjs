@@ -90,15 +90,15 @@ const [size, setSize] = useState('5l')
 
             <div className="border-b-2 py-2"></div>
 
-            <div className="flex pt-4 gap-10">
+            <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2">
               <Color />
 
               <Size />
             </div>
 
-            <div className="flex pt-10">
+            <div className="flex py-6">
               <Counter />
-              <button className="w-32 bg-gray-800 hover:bg-gray-600 rounded-md mx-4 text-white">
+              <button className="w-32 bg-gray-800 hover:bg-gray-600 active:bg-gray-900 rounded-md mx-4 text-white">
                 Add to Cart
               </button>
             </div>
